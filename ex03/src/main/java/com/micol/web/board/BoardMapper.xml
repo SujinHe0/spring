@@ -31,7 +31,7 @@
 	<insert id="insertBrd" parameterType="boardVO">
 		INSERT INTO TBL_BOARD(BNO, TITLE, CONTENT, WRITER)
 		VALUES(
-				#{bNo},
+				seq_board.nextval,
 				#{title},
 				#{content},
 				#{writer}
