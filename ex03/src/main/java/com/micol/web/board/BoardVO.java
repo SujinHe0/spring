@@ -4,10 +4,10 @@ import lombok.Data;
 
 @Data
 public class BoardVO {
-	String bno;
+	String bNo;
 	String title;
 	String content;
 	String writer;
-	String regdate;
-	String updatedate;
+	String regDate;
+	String updateDate;
 }

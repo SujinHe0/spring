@@ -4,18 +4,11 @@
 
 	<sql id="condition">
 		<where>
-			<if test="departmentId !=null ">
-				DEPARTMENT_ID = #{departmentId}
+			<if test="title">
+				AND TITLE '%' || #{title} || '%'
 			</if>
-			<if test="firstName">
-				AND FIRST_NAME LIKE '%' || #{firstName} || '%'
-			</if>
-			<if test="employeeIds != null">
-				employee_id in
-				<foreach collection="employeeIds" item="id" open="("
-					close=")" separator=",">
-					#{id}
-				</foreach>
+			<if test="WRITER">
+				WRITER = #{writer}
 			</if>
 		</where>
 	</sql>
@@ -27,11 +20,37 @@
 	<select id="getBrd" parameterType="string" resultType="boardVO">
 		SELECT *
 		FROM TBL_BOARD
-		WHERE BNO = #{bno}
+		WHERE BNO = #{bNo}
 	</select>
 
 	<select id="count" resultType="int">
 		SELECT COUNT(*) FROM TBL_BOARD
 		<include refid="condition" />
 	</select>
+	
+	<insert id="insertBrd" parameterType="boardVO">
+		INSERT INTO TBL_BOARD(BNO, TITLE, CONTENT, WRITER)
+		VALUES(
+				#{bNo},
+				#{title},
+				#{content},
+				#{writer}
+				)
+	</insert>
+	
+	<update id="updateBrd" parameterType="boardVO">
+		update tbl_board
+		set
+		TITLE = #{title},
+		CONTENT = #{content},
+		WRITER = #{writer},
+		UPDATEDATE = #{updateDate}
+		WHERE BNO = #{bNo}
+	</update>
+	
+	<delete id="deleteBrd" parameterType="string">
+		DELETE FROM TBL_BOARD
+		WHERE BNO = #{bNo}
+	</delete>
+	
 </mapper>
