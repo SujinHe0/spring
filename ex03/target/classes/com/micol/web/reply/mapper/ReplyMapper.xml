@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.micol.web.reply.mapper.ReplyMapper">
+
+	<insert id="insertReply" parameterType="replyVO">
+		INSERT INTO TBL_reply(RNO, BNO, reply, replyer)
+		VALUES(
+				seq_reply.nextval,
+				#{bNo},
+				#{reply},
+				#{replyer}
+				)
+	</insert>
+	
+	<select id="getRelyAll" resultType="replyVO">
+		SELECT * FROM TBL_REPLY
+		WHERE BNO = #{value}
+	</select>
+</mapper>
