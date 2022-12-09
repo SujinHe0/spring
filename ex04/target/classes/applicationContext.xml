@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+<!-- 	<bean id="myspeaker" class="ex04.SonySpeaker" />
+	
+	<bean id="tv" class="ex04.SamsungTV">
+	property는 삼성안에서.. 의존관계로 연결된 이름찾을때, name
+		같은 name을 찾아서 객체를 주입한다!
+		참고하는..bean은 ref로 찾는다.
+		<property name="speaker" ref="myspeaker"></property>
+	const 는 name보다는 인수 순서가 중요하다
+	<constructor-arg name="speaker" ref="myspeaker"></constructor-arg>
+	</bean> -->
+	
+	<!-- ex04밑에있는 패키지 다 살펴보고 등록.. -->
+	<context:component-scan base-package="ex04"></context:component-scan>
+</beans>
