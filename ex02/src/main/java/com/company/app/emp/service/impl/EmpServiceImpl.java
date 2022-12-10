@@ -6,23 +6,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import com.company.app.common.Paging;
 import com.company.app.emp.mapper.EmpMapper;
 import com.company.app.emp.service.EmpService;
 import com.company.app.emp.service.EmpVO;
 
 import lombok.extern.log4j.Log4j;
 
-@Service //ºó µî·Ï, Æ®·£Àè¼Ç Ã³¸®
+@Service //ï¿½ï¿½ ï¿½ï¿½ï¿½, Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 
 
-//±¸ÇöÅ¬·¡½º¸¦ ºó¿¡ µî·ÏÇØ¾ßÇÔ
+//ï¿½ï¿½ï¿½ï¿½Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½
 public class EmpServiceImpl implements EmpService{
 
 	@Autowired EmpMapper empMapper;
 	
 	@Override
-	public List<EmpVO> getEmpAll(EmpVO vo) {
-		// TODO Auto-generated method stub
+	public List<EmpVO> getEmpAll(EmpVO vo, Paging paging) {
+		paging.setTotalRecord(empMapper.count(vo));  //start end ê²€ìƒ‰
+		vo.setFirst(paging.getFirst());
+		vo.setLast(paging.getLast());
 		return empMapper.getEmpAll(vo);
 	}
 
@@ -51,7 +54,7 @@ public class EmpServiceImpl implements EmpService{
 		if(check == 0) {
 			return empMapper.deleteEmp(id);
 		} else {			
-			System.out.println("»èÁ¦ ºÒ°¡");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½Ò°ï¿½");
 			return 0;
 		}
 	}

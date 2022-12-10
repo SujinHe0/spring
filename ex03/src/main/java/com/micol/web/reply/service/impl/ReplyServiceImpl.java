@@ -2,12 +2,15 @@ package com.micol.web.reply.service.impl;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.micol.web.reply.mapper.ReplyMapper;
 import com.micol.web.reply.service.ReplyService;
 import com.micol.web.reply.service.ReplyVO;
 
+@Service
 public class ReplyServiceImpl implements ReplyService{
 
 	@Autowired ReplyMapper mapper;
@@ -17,7 +20,6 @@ public class ReplyServiceImpl implements ReplyService{
 		// TODO Auto-generated method stub
 		return mapper.insertReply(vo);
 	}
-
 
 	@Override
 	public int deleteReply(int rno) {

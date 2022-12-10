@@ -8,7 +8,7 @@
 <h1>
 	Hello world!  
 </h1>
-
+<img src="./images/code.jpg" width="800">
 <P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>

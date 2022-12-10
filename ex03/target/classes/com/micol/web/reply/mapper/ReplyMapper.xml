@@ -16,4 +16,9 @@
 		SELECT * FROM TBL_REPLY
 		WHERE BNO = #{value}
 	</select>
+	
+	<delete id="deleteReply" parameterType="int">
+		DELETE FROM TBL_REPLY
+		WHERE RNO = #{value}
+	</delete>
 </mapper>

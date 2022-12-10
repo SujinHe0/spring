@@ -5,14 +5,15 @@
 	<!-- 삭제 -->
 	<delete id="deleteEmp" parameterType="string">
 		DELETE FROM EMPLOYEES
-		WHERE EMPLOYEE_ID = #{value}
+		WHERE
+		EMPLOYEE_ID = #{value}
 	</delete>
-	
+
 	<!-- 매니저 확인여부 -->
 	<select id="getManagerCheck">
-	SELECT COUNT(*) 
-	FROM EMPLOYEES 
-	WHERE MANAGER_ID = #{value}
+		SELECT COUNT(*)
+		FROM EMPLOYEES
+		WHERE MANAGER_ID = #{value}
 	</select>
 
 	<sql id="condition">
@@ -37,11 +38,17 @@
 		select count(*) from employees
 		<include refid="condition" />
 	</select>
-
+	<!-- 전체조회 -->
 	<select id="getEmpAll" resultType="empVO">
+		SELECT * FROM ( SELECT ROWNUM RN, A.* FROM (
+
 		SELECT *
 		FROM EMPLOYEES
+
 		<include refid="condition" />
+		<![CDATA[		
+		) A WHERE ROWNUM <= #{last} ) WHERE RN >=  #{first} 
+		]]>
 	</select>
 
 

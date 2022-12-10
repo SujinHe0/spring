@@ -4,17 +4,19 @@
 
 	<sql id="condition">
 		<where>
-			<if test="title">
+			<if test="title and title !=''">
 				AND TITLE '%' || #{title} || '%'
 			</if>
-			<if test="WRITER">
+			<if test="WRITER and !WRITER.equals('')">
 				WRITER = #{writer}
 			</if>
 		</where>
 	</sql>
 	
+	<!-- 전체조회 -->
 	<select id="getBrdAll" resultType="boardVO">
 		SELECT * FROM TBL_BOARD
+		<include refid="condition" />
 	</select>
 
 	<select id="getBrd" parameterType="string" resultType="boardVO">

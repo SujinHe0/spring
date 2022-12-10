@@ -2,17 +2,19 @@ package com.micol.web.board.service;
 
 import java.util.List;
 
-public interface BoardService {
-	// ÀüÃ¼Á¶È¸, Á¶°Ç³Ö¾î¼­
-	List<BoardVO> getBrdAll(BoardVO vo);
+import com.micol.web.common.Paging;
 
-	// ´Ü°ÇÁ¶È¸
+public interface BoardService {
+	//ì „ì²´ ê²Œì‹œë¬¼ ì¡°íšŒ
+	List<BoardVO> getBrdAll(BoardVO vo, Paging paging);
+
+	// ê¸€ë²ˆí˜¸ë¡œ ê²Œì‹œë¬¼ ì¡°íšŒ
 	BoardVO getBrd(String bno);
 
-	// °Ç¼öÁ¶È¸, ÀüÃ¼Á¶È¸¶û °°Àº Á¶°ÇÀ¸·Î
+	//ì „ì²´ ê¸€ ê°¯ìˆ˜
 	int count(BoardVO vo);
 
-	// µî·Ï¼öÁ¤»èÁ¦
+	// ë“±ë¡ ì‚­ì œ ìˆ˜ì •
 	int insertBrd(BoardVO vo);
 
 	int deleteBrd(String bno);

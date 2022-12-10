@@ -1,5 +1,6 @@
 package com.micol.web;
 
+
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 
 import java.util.List;
@@ -35,8 +36,14 @@ public class ReplyMapperClient {
 	@Test
 	public void selectRep() {
 		ReplyVO vo =  new ReplyVO();
-		List<ReplyVO> list =  mapper.getRelyAll(10);
+		List<ReplyVO> list =  mapper.getRelyAll(5);
 		list.forEach(reply -> log.info(reply));
+	}
+	
+//	@Test
+	public void deleteRep() {
+		int r = mapper.deleteReply(15);
+		log.info(r + "건이 삭제되었습니다.");
 	}
 	
 }

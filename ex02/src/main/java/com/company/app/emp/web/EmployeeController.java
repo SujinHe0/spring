@@ -5,20 +5,30 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.company.app.common.Paging;
 import com.company.app.emp.service.EmpService;
 import com.company.app.emp.service.EmpVO;
 
-@Controller //@Component ÄÄÅ×ÀÌ³Ê¿¡ ºó µî·Ï, ¼­ºí¸´ÀÌ È£Ãâ ÇÒ ¼ö ÀÖµµ·Ï Ä¿¸ÇµåÈ­ ½ÃÄÑÁÜ
+@Controller //@Component ì»¨í…Œì´ë„ˆì— ë¹ˆ ìë™ë“±ë¡@
+@RequestMapping("/emp")
 public class EmployeeController {
 
 	@Autowired EmpService empService;
 	
-	//ÀüÃ¼Á¶È¸
-	@RequestMapping("empSelectAll")
-	public String empSelectAll(Model model, EmpVO vo) {
-		model.addAttribute("emps", empService.getEmpAll(vo)  );
-		return "empSelect";		
+	//ì „ì²´ì¡°íšŒ, ê²€ìƒ‰
+	@RequestMapping("/empSelectAll")
+	public String empSelectAll(Model model, EmpVO vo, Paging paging) { //page
+		paging.setPageUnit(3);
+		model.addAttribute("emps", empService.getEmpAll(vo, paging)  );
+		return "user/emp/empSelect";		
 	}
 	
-	//ºäÆäÀÌÁö·Î ³Ñ°ÜÁÙ¶§´Â model »ç¿ë.. ¸Å°³º¯¼ö¿¡ ³ÖÀ¸¸é ÀÚµ¿ÀûÀ¸·Î ³Ö¾îÁØ´Ù springÀÌ
+	//ëª¨ë¸ì— ê°ì²´ ì„ ì–¸í•„ìš”ì—†ì´, ë§¤ê°œê°’ì— ë„£ìœ¼ë©´ ìë™ìœ¼ë¡œ ë§Œë“¤ì–´ì„œ model ë„˜ê²¨ì¤€ë‹¤  springì—ì„œ ìë™ìœ¼ë¡œ
+	//ë‹¨ê±´ì¡°íšŒ
+	@RequestMapping("/empSelect")
+	public String empSelect(Model model, String id) {
+		model.addAttribute("emp", empService.getEmp(id) );
+		return "user/emp/emp";
+
+	}
 }
