@@ -3,9 +3,9 @@ package com.company.app.dept.service;
 import java.util.List;
 
 public interface DeptService {
-	//µî·Ï 
+	
 	int insertDept(DeptVO vo);
 	
-	//ÀüÃ¼Á¶È¸
+	//ï¿½ï¿½Ã¼ï¿½ï¿½È¸
 	List<DeptVO> getDeptAll(DeptVO vo);
 }

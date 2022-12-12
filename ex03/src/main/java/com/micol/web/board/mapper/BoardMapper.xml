@@ -7,8 +7,8 @@
 			<if test="title and title !=''">
 				AND TITLE '%' || #{title} || '%'
 			</if>
-			<if test="WRITER and !WRITER.equals('')">
-				WRITER = #{writer}
+			<if test="writer and !writer.equals('')">
+				writer = #{writer}
 			</if>
 		</where>
 	</sql>

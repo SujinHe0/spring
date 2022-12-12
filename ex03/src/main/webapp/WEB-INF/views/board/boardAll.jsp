@@ -13,5 +13,8 @@
 	제목:<input name="title value="${boardVO.title }">
 	작성자:<input name="title value="${boardVO.writer }">
 	</form>
+	
+
+	
 </body>
 </html>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+		<setting name="jdbcTypeForNull" value="VARCHAR"/>
+	</settings>
+	<typeAliases>
+<!-- 패키지 밑에 모든 VO 찾아서 등록해주기 위해~!  empVO, EmpVO 형태로 자동등록-->
+		<package name="co.yedam.prjt"/> 
+	</typeAliases>
+</configuration>
